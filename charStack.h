@@ -28,6 +28,12 @@ bool initializeStack(Stack *s, int size)
 	return true;
 }
 
+int isEmpty(Stack* s)
+{
+	return s->sp == -1;
+}
+
+
 int push(Stack *s, char item)
 {
 	if (s->arr == NULL)
