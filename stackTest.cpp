@@ -1,7 +1,7 @@
 #include "intStack.h"
 int main()
 {
-	Stack s;
+	Istack s;
 
 	int choice = -1;
 

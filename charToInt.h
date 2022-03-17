@@ -1,5 +1,3 @@
-#include "intstack.h"
-
 int chartoint(char x)
 {
     int y;
