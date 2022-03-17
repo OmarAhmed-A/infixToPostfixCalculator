@@ -1,0 +1,5 @@
+int checkInput(char *input)
+{
+    
+
+}
