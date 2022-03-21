@@ -43,4 +43,3 @@ int checkInput(char *input)
     }
 
     return 0; // all ok
-}
