@@ -1,14 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-struct Stack
+struct Cstack
 {
 	char* arr;
 	int sp;
 	int size;
 
 	//Constructor (from C++)
-	Stack()
+	Cstack()
 	{
 		arr = NULL;
 		sp = -1;
@@ -16,7 +16,7 @@ struct Stack
 	}
 };
 
-bool initializeStack(Stack *s, int size)
+bool initializeStack(Cstack *s, int size)
 {
 	if (s->arr != NULL) //In case previous malloc is called
 		free(s->arr);
@@ -28,42 +28,42 @@ bool initializeStack(Stack *s, int size)
 	return true;
 }
 
-int isEmpty(Stack* s)
+int isEmpty(Cstack* s)
 {
 	return s->sp == -1;
 }
 
 
-int push(Stack *s, char item)
+int push(Cstack *s, char item)
 {
 	if (s->arr == NULL)
-		return -1;	//Stack not initialized !
+		return -1;	//Cstack not initialized !
 	if (s->sp + 1 == s->size)
-		return -2;	//Stack overflow !
+		return -2;	//Cstack overflow !
 
 	s->sp = s->sp + 1;	//or s->sp++;
 	s->arr[s->sp] = item;
 	return 0;
 }
 
-int pop(Stack *s, char* item)
+int pop(Cstack *s, char* item)
 {
 	if (s->arr == NULL)
-		return -1;	//Stack not initialized !
+		return -1;	//Cstack not initialized !
 	if (isEmpty(s))
-		return -2;	//Stack underflow !
+		return -2;	//Cstack underflow !
 
 	*item = s->arr[s->sp];
 	s->sp = s->sp - 1;	//s->sp--;
 	return 0;
 }
 
-int isEmpty(Stack* s)
+int isEmpty(Cstack* s)
 {
 	return s->sp == -1;
 }
 
-int peek(Stack* s, char *item)
+int peek(Cstack* s, char *item)
 {
     if (!isEmpty(s))
     *item = s->arr[s->sp];
