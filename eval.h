@@ -1,4 +1,4 @@
-#include"charStack.h"
+//#include"charStack.h"
 #include"intStack.h"
 #include"charToInt.h"
 #include<string.h>
@@ -6,8 +6,8 @@
 #include<math.h>
 float evaltion(char postfix[])
 {
-    Stack s;
-    float total;
+    Istack s;
+    int total;
     int b=strlen(postfix);//number of characters in postfix
     initializeStack(&s,b);
     for(int i=0;i<b;i++)//loop ala el postfix to start evaluation
@@ -19,7 +19,7 @@ float evaltion(char postfix[])
             {
                 push(&s,postfix[j]);//push in stack char of interger only untill an simble shows up
             }
-            float x,y;
+            int x,y;
             pop(&s,&x);//pop in stack char of two interger before simble 
             pop(&s,&y);
             switch(postfix[j])
