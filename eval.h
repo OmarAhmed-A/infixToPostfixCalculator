@@ -10,7 +10,7 @@ float evaltion(char postfix[])
     int total;
     int b=strlen(postfix);//number of characters in postfix
     initializeStack(&s,b);
-    for(int i=0;i<b;i++)//loop ala el postfix to start evaluation
+    for(int i=0;i<b;i++)//loop 3la el postfix to start evaluation
     {
         if(isdigit(postfix[i]))//check if postfix is a digit
         {
@@ -19,30 +19,42 @@ float evaltion(char postfix[])
             {
                 push(&s,postfix[j]);//push in stack char of interger only untill an simble shows up
             }
-            int x,y;
-            pop(&s,&x);//pop in stack char of two interger before simble 
-            pop(&s,&y);
-            switch(postfix[j])
+            int x,y,checker1,checker2,checker3,checker4;//checker use to check if there is any errors occures
+            checker1=pop(&s,&x);//pop in stack char of two interger before simble 
+            checker2=pop(&s,&y);
+            if(checker1==0&&checker2==0)
             {
-                case '+':push(&s,chartoint(x)+chartoint(y));//push back the result to the stack to continue the evaluation process
+                switch(postfix[j])
+            {
+                case '+':checker3=push(&s,chartoint(x)+chartoint(y));//push back the result to the stack to continue the evaluation process
                         break;
-                case '-':push(&s,chartoint(x)-chartoint(y));
+                case '-':checker3=push(&s,chartoint(x)-chartoint(y));
                         break;
-                case '*':push(&s,chartoint(x)*chartoint(y));
+                case '*':checker3=push(&s,chartoint(x)*chartoint(y));
                         break;
-                case '/':push(&s,chartoint(x)/chartoint(y));
+                case '/':checker3=push(&s,chartoint(x)/chartoint(y));
                         break;
-                case '^':push(&s,pow(chartoint(x),chartoint(y)));
+                case '^':checker3=push(&s,pow(chartoint(x),chartoint(y)));
                         break;
             }
-            
-            if(isEmpty)
+            if(checker3==0)
             {
-                peek(&s,&total);
-                return total;
+                if(isEmpty)
+                {
+                    checker4=pop(&s,&total);
+                    if(checker4==0)
+                        return total;
+                    else
+                    printf("error %d",checker3);
+                }
+                else
+                j=0;
+                }
+            else printf("error %d",checker4);
+            
             }
             else
-            j=0;
+            printf("error %d & error %d occures",checker1,checker2);
             
         }
     }
