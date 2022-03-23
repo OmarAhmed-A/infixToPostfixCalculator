@@ -1,13 +1,13 @@
 //#include"charStack.h"
-#include"intStack.h"
+#include"FStack.h"
 #include"charToInt.h"
 #include<string.h>
 #include<ctype.h>
 #include<math.h>
 float evaltion(char postfix[])
 {
-    Istack s;
-    int total;
+    Fstack s;
+    float total;
     int b=strlen(postfix);//number of characters in postfix
     initializeStack(&s,b);
     for(int i=0;i<b;i++)//loop 3la el postfix to start evaluation
@@ -19,8 +19,9 @@ float evaltion(char postfix[])
             {
                 push(&s,postfix[j]);//push in stack char of interger only untill an simble shows up
             }
-            int x,y,checker1,checker2,checker3,checker4;//checker use to check if there is any errors occures
-            checker1=pop(&s,&x);//pop in stack char of two interger before simble 
+
+            float x,y,error;//checker use to check if there is any errors occures
+            error1=pop(&s,&x);//pop from stack char of two interger before symbol
             checker2=pop(&s,&y);
             if(checker1==0&&checker2==0)
             {
@@ -32,7 +33,7 @@ float evaltion(char postfix[])
                         break;
                 case '*':checker3=push(&s,chartoint(x)*chartoint(y));
                         break;
-                case '/':checker3=push(&s,chartoint(x)/chartoint(y));
+                case '/':checker3=push(&s,chartoint(y)/chartoint(x));
                         break;
                 case '^':checker3=push(&s,pow(chartoint(x),chartoint(y)));
                         break;
