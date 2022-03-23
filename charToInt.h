@@ -2,5 +2,5 @@ int chartoint(char x)
 {
     int y;
     x-='0';
-    y= (int)x;
+    return (int)x;
 } 
