@@ -28,9 +28,9 @@ float evaluation(char postfix[],float *total)
                         break;
                 case '*':push(&s,second_value* first_value); 
                         break;
-                case '/':if(first_value==0)
+                case '/':if(first_value==0)//is used to make sure that first_value ==0 as first_value is the B (a/B) "where B cann't be =0" so math error will be produced
                         {
-                        h++;
+                        h++;//ehna momken hena na3mal h-- or h=-1 print fel2akher return h mesh 0 or -1
                         }
                         else push(&s,second_value/first_value);
                         break;
