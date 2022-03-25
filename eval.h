@@ -19,7 +19,7 @@ float evaluation(char postfix[],float *total)
             pop(&s,&x);//first value
             pop(&s,&y);//second value
             float first_value=x,second_value=y;
-            printf("\n%f\n%f\n",first_value,second_value);
+            //printf("\n%f\n%f\n",first_value,second_value);
             switch(postfix[i])
             {
                 case '+':push(&s,second_value + first_value);//push back the result to the stack to continue the evaluation process
