@@ -3,10 +3,10 @@
 #include<string.h>
 #include<ctype.h>
 #include<math.h>
-float evaluation(char postfix[])
+float evaluation(char postfix[],float *total)
 {
     Fstack s;
-    float total=0;
+    *total=0;
     int i,h=0, b=strlen(postfix);//number of characters in postfix
     initializeStack(&s,b);
     for(i=0;i<b;i++)//loop 3la el postfix to start evaluation
@@ -30,7 +30,6 @@ float evaluation(char postfix[])
                         break;
                 case '/':if(first_value==0)
                         {
-                        printf("\nmath error");
                         h++;
                         }
                         else push(&s,second_value/first_value);
@@ -42,9 +41,9 @@ float evaluation(char postfix[])
         else if(isspace(postfix[i]))
             break;
     }
-    peek(&s,&total);
+    peek(&s,total);
     if(h == 0)
-    return total;
+    return 0;
     else return -1;
 
 }
