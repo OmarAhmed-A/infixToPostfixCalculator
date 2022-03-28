@@ -17,10 +17,6 @@ by
 
 Build from source using any available C++ compiler or use included executable.
 start application and input your equation in INFIX notation (2+3-4)/2*4
-<<<<<<< HEAD
-calculator accepts single digit numbers and the following operands, (* / + - ).
-=======
+
 calculator accepts single digit numbers and the following operands, ( * / + - ).
 Equation cannot be more than 256 charachters long.
-
->>>>>>> 5225ed5fccce1a1342410929ac3d5972175cd6d5
