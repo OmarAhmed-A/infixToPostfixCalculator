@@ -1,6 +1,3 @@
-# DataProject
-CC215-Data Structures 7th project
-
 # Infix to postfix calculator
 illustrating evaluation which happens in the back
 ![gif illustrating evaluation](eval.gif)
