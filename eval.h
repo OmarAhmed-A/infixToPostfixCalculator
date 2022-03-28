@@ -1,50 +1,41 @@
-//#include"charStack.h"
-#include"intStack.h"
-#include"charToInt.h"
+#include"FStack.h"
+#include"CharToFloat.h"
 #include<string.h>
 #include<ctype.h>
 #include<math.h>
-float evaltion(char postfix[])
+float evaluation(char postfix[],float *total)
 {
-    Istack s;
-    int total;
-    int b=strlen(postfix);//number of characters in postfix
+    Fstack s;
+    int h=0,b=strlen(postfix);//number of characters in postfix
     initializeStack(&s,b);
-    for(int i=0;i<b;i++)//loop ala el postfix to start evaluation
+    for(int i=0;i<b;i++)//loop 3la el postfix to start evaluation
     {
-        if(isdigit(postfix[i]))//check if postfix is a digit
+        if(isdigit(postfix[i])==true)
+            push(&s,charToFloat(postfix[i]));
+        else if(postfix[i] == '-'||postfix[i] =='+'||postfix[i] == '/'||postfix[i] == '*'||postfix[i] == '^')//mesh hadakhal haga 3ar el mathimatical charters
         {
-            int j;
-            for(j=0;!isdigit(postfix[j]);j++)//loop until postfix char
-            {
-                push(&s,postfix[j]);//push in stack char of interger only untill an simble shows up
-            }
-            int x,y;
-            pop(&s,&x);//pop in stack char of two interger before simble 
-            pop(&s,&y);
-            switch(postfix[j])
-            {
-                case '+':push(&s,chartoint(x)+chartoint(y));//push back the result to the stack to continue the evaluation process
-                        break;
-                case '-':push(&s,chartoint(x)-chartoint(y));
-                        break;
-                case '*':push(&s,chartoint(x)*chartoint(y));
-                        break;
-                case '/':push(&s,chartoint(x)/chartoint(y));
-                        break;
-                case '^':push(&s,pow(chartoint(x),chartoint(y)));
-                        break;
-            }
-            
-            if(isEmpty)
-            {
-                peek(&s,&total);
-                return total;
-            }
-            else
-            j=0;
-            
+            float first_value,second_value;    
+            pop(&s,&first_value);//first value
+            pop(&s,&second_value);//second value
+            if(postfix[i]=='+')
+                push(&s,second_value + first_value);//push back the result to the stack to continue the evaluation process
+            else if(postfix[i]=='-')
+                push(&s,second_value - first_value);
+            else if (postfix[i]=='*')
+                push(&s,second_value * first_value); 
+            else if(postfix[i]=='/')
+                if(first_value==0)//make sure that first value isn't == 0
+                    h++;//to return error for main 
+                else 
+                    push(&s,second_value / first_value);
+            else if(postfix[i] == '^')
+                push(&s,pow(second_value,first_value));
         }
+        else if(isspace(postfix[i])==true)
+            break;//if postfix comes with spaces like postfix[]]="2 2 /" will run without any problems
     }
-
+    peek(&s,total);
+    if(h == 0)//if math error will return -1
+    return 0;//no errors produced
+    else return -1;//math error produced
 }

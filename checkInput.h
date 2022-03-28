@@ -20,7 +20,7 @@ int checkBrackets(char *input)
         }
     }
 
-    if (!isEmpty)
+    if (!isEmpty(&s))
         return 1; // not balanced
 
     return 0; // bancled
@@ -28,6 +28,7 @@ int checkBrackets(char *input)
 
 int checkInput(char *input)
 {
+    checkBrackets(input);
 
     if (input[strlen(input)-1] == '+' || input[strlen(input)-1] == '-' ||
         input[strlen(input)-1] == '*' || input[strlen(input)-1] == '/')
