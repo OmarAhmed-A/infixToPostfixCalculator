@@ -1,5 +1,6 @@
 # Infix to postfix calculator
 illustrating evaluation which happens in the back
+
 ![gif illustrating evaluation](eval.gif)
 ## About:
 This calculator was made as a project for CC215 (Data structures course) semester 4 at AAST university 
