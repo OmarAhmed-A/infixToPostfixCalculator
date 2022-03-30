@@ -58,10 +58,10 @@ int pop(Cstack *s, char* item)
 	return 0;
 }
 
-int isEmpty(Cstack* s)
-{
-	return s->sp == -1;
-}
+// int isEmpty(Cstack* s)
+// {
+// 	return s->sp == -1;
+// }
 
 int peek(Cstack* s, char *item)
 {

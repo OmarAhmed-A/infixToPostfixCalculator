@@ -6,44 +6,36 @@
 float evaluation(char postfix[],float *total)
 {
     Fstack s;
-    *total=0;
-    int i,h=0, b=strlen(postfix);//number of characters in postfix
+    int h=0,b=strlen(postfix);//number of characters in postfix
     initializeStack(&s,b);
-    for(i=0;i<b;i++)//loop 3la el postfix to start evaluation
+    for(int i=0;i<b;i++)//loop 3la el postfix to start evaluation
     {
-        if(isdigit(postfix[i]))
-                push(&s,chartoFloat(postfix[i]));
-        else if(postfix[i] == '-'||postfix[i] =='+'||postfix[i] == '/'||postfix[i] == '*'||postfix[i] == '^')
+        if(isdigit(postfix[i])==true)
+            push(&s,chartoFloat(postfix[i]));
+        else if(postfix[i] == '-'||postfix[i] =='+'||postfix[i] == '/'||postfix[i] == '*'||postfix[i] == '^')//mesh hadakhal haga 3ar el mathimatical charters
         {
-            float x,y;
-            pop(&s,&x);//first value
-            pop(&s,&y);//second value
-            float first_value=x,second_value=y;
-            //printf("\n%f\n%f\n",first_value,second_value);
-            switch(postfix[i])
-            {
-                case '+':push(&s,second_value + first_value);//push back the result to the stack to continue the evaluation process
-                        break;
-                case '-':push(&s,second_value - first_value);
-                        break;
-                case '*':push(&s,second_value* first_value); 
-                        break;
-                case '/':if(first_value==0)//is used to make sure that first_value ==0 as first_value is the B (a/B) "where B cann't be =0" so math error will be produced
-                        {
-                        h++;//ehna momken hena na3mal h-- or h=-1 print fel2akher return h mesh 0 or -1
-                        }
-                        else push(&s,second_value/first_value);
-                        break;
-                case '^':push(&s,pow(second_value,first_value));
-                        break;
-                }
+            float first_value,second_value;    
+            pop(&s,&first_value);//first value
+            pop(&s,&second_value);//second value
+            if(postfix[i]=='+')
+                push(&s,second_value + first_value);//push back the result to the stack to continue the evaluation process
+            else if(postfix[i]=='-')
+                push(&s,second_value - first_value);
+            else if (postfix[i]=='*')
+                push(&s,second_value * first_value); 
+            else if(postfix[i]=='/')
+                if(first_value==0)//make sure that first value isn't == 0
+                    h++;//to return error for main 
+                else 
+                    push(&s,second_value / first_value);
+            else if(postfix[i] == '^')
+                push(&s,pow(second_value,first_value));
         }
-        else if(isspace(postfix[i]))
-            break;
+        else if(isspace(postfix[i])==true)
+            break;//if postfix comes with spaces like postfix[]]="2 2 /" will run without any problems
     }
     peek(&s,total);
-    if(h == 0)
-    return 0;
-    else return -1;
-
+    if(h == 0)//if math error will return -1
+    return 0;//no errors produced
+    else return -1;//math error produced
 }
