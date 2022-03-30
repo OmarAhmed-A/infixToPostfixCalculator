@@ -13,7 +13,7 @@ int main()
     system("cls");
     while (e != 0)
     {
-        printf("\nplease enter infix equation using operators ^*/+- and ()");
+        printf("\nplease enter infix equation using operators ^*/+- and ()\n");
         gets(input);
         e = checkInput(input);
         if (e != 0)
@@ -21,7 +21,7 @@ int main()
     }
     infixtopostfix(input,postfix);
     e = evaluation(postfix, &total);
-    printf("your answer is %.2f", total);
+    printf("\nyour answer is %.2f", total);
 
     return 0;
 }

@@ -13,7 +13,7 @@ float evaluation(char postfix[],float *total)
     initializeStack(&s,b);
     for(int i=0;i<b;i++)//loop 3la el postfix to start evaluation
     {
-        if(isdigit(postfix[i])==true)
+        if(isdigit(postfix[i]))
             push(&s,charToFloat(postfix[i]));
         else if(postfix[i] == '-'||postfix[i] =='+'||postfix[i] == '/'||postfix[i] == '*'||postfix[i] == '^')//mesh hadakhal haga 3ar el mathimatical charters
         {
@@ -34,7 +34,7 @@ float evaluation(char postfix[],float *total)
             else if(postfix[i] == '^')
                 push(&s,pow(second_value,first_value));
         }
-        else if(isspace(postfix[i])==true)
+        else if(isspace(postfix[i]))
             break;//if postfix comes with spaces like postfix[]]="2 2 /" will run without any problems
     }
     peek(&s,total);
