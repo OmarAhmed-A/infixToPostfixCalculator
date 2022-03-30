@@ -10,7 +10,7 @@ This calculator was made as a project for CC215 (Data structures course) semeste
 by
 
 - Omar Ahmed (20107196)
-- Hassan Mekawi
+- Hassan Mekawi (20104451)
 - Omar Samy
 
 ## Usage
