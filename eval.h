@@ -4,6 +4,8 @@
 #include<string.h>
 #include<ctype.h>
 #include<math.h>
+#pragma once
+
 float evaluation(char postfix[],float *total)
 {
     Fstack s;

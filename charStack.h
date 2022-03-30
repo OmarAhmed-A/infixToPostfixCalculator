@@ -1,6 +1,7 @@
 // Made By Omar Ahmed
 #include <stdio.h>
 #include <stdlib.h>
+#pragma once
 
 struct Cstack
 {
@@ -57,11 +58,6 @@ int pop(Cstack *s, char* item)
 	*item = s->arr[s->sp];
 	s->sp = s->sp - 1;	//s->sp--;
 	return 0;
-}
-
-int isEmpty(Cstack* s)
-{
-	return s->sp == -1;
 }
 
 int peek(Cstack* s, char *item)

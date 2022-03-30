@@ -1,6 +1,7 @@
 // Made By Omar Ahmed
 #include <stdio.h>
 #include <stdlib.h>
+#pragma once
 
 struct Fstack
 {

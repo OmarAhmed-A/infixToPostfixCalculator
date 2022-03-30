@@ -350,3 +350,4 @@ MigrationBackup/
 .ionide/
 *.exe
 removeExtention.BAT
+*.json

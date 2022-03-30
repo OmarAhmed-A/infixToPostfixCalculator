@@ -2,6 +2,7 @@
 #include "charStack.h"
 #include <string.h>
 #include <ctype.h>
+#pragma once
 
 int checkBrackets(char *input)
 {
@@ -47,3 +48,4 @@ int checkInput(char *input)
     }
 
     return 0; // all ok
+}
