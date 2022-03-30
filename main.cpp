@@ -8,13 +8,13 @@ int main()
 {
     int e = 1;
     float total;
-    char input[]="(2-3+4)*(5+6*7)+4^5";
+    char input[256];
     char postfix[256];
     system("cls");
     while (e != 0)
     {
         printf("\nplease enter infix equation using operators ^*/+- and ()");
-        // gets(input);
+        gets(input);
         e = checkInput(input);
         if (e != 0)
             printf("\ninput error (%d)", e);
