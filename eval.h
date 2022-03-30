@@ -1,3 +1,4 @@
+//by Hassan mekawi
 #include"FStack.h"
 #include"charToFloat.h"
 #include<string.h>
@@ -35,6 +36,7 @@ float evaluation(char postfix[],float *total)
             break;//if postfix comes with spaces like postfix[]]="2 2 /" will run without any problems
     }
     peek(&s,total);
+
     if(h == 0)//if math error will return -1
     return 0;//no errors produced
     else return -1;//math error produced
