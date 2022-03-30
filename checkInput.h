@@ -39,7 +39,7 @@ int checkInput(char *input)
     {
         if(isalpha(input[i]))
         return -4; //letters are not allowed
-        if (isdigit(input[i]) && isdigit(input[i + 1]))
+        else if (isdigit(input[i]) && isdigit(input[i + 1]))
             return -2; // multidigit input num //not allowed
         else if ((input[i] == '^' || input[i] == '+' || input[i] == '/' || input[i] == '*' || input[i] == '-') 
             &&  (input[i+1] == '^' || input[i+1] == '+' || input[i+1] == '/' || input[i+1] == '*' || input[i+1] == '-'))
