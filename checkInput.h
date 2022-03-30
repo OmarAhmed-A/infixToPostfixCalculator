@@ -31,16 +31,18 @@ int checkInput(char *input)
 {
     checkBrackets(input);
 
-    if (input[strlen(input)-1] == '+' || input[strlen(input)-1] == '-' ||
+    if (input[strlen(input)-1] == '^' ||input[strlen(input)-1] == '+' || input[strlen(input)-1] == '-' ||
         input[strlen(input)-1] == '*' || input[strlen(input)-1] == '/')
         return -1; // last char of input is operator // not allowed
 
     for (int i = 0; i < strlen(input); i++)
     {
+        if(isalpha(input[i]))
+        return -4; //letters are not allowed
         if (isdigit(input[i]) && isdigit(input[i + 1]))
             return -2; // multidigit input num //not allowed
-        else if ((input[i] == '+' || input[i] == '/' || input[i] == '*' || input[i] == '-') 
-            &&  (input[i+1] == '+' || input[i+1] == '/' || input[i+1] == '*' || input[i+1] == '-'))
+        else if ((input[i] == '^' || input[i] == '+' || input[i] == '/' || input[i] == '*' || input[i] == '-') 
+            &&  (input[i+1] == '^' || input[i+1] == '+' || input[i+1] == '/' || input[i+1] == '*' || input[i+1] == '-'))
             return -3; // multiple operators in a row //not allowed
     }
 
